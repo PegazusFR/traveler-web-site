@@ -1,0 +1,14 @@
+version: '2'
+services:
+    travelerwebsite-app:
+        image: travelerwebsite
+        environment:
+            - SPRING_PROFILES_ACTIVE=prod,swagger
+            - SPRING_DATASOURCE_URL=jdbc:postgresql://travelerwebsite-postgresql:5432/travelerWebSite
+            - JHIPSTER_SLEEP=10 # gives time for the database to boot before the application
+        ports:
+            - 8080:8080
+    travelerwebsite-postgresql:
+        extends:
+            file: postgresql.yml
+            service: travelerwebsite-postgresql
