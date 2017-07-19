@@ -41,6 +41,11 @@ public class CacheConfiguration {
             cm.createCache(univers.torri.fr.domain.Authority.class.getName(), jcacheConfiguration);
             cm.createCache(univers.torri.fr.domain.User.class.getName() + ".authorities", jcacheConfiguration);
             cm.createCache(univers.torri.fr.domain.SocialUserConnection.class.getName(), jcacheConfiguration);
+            cm.createCache(univers.torri.fr.domain.Article.class.getName(), jcacheConfiguration);
+            cm.createCache(univers.torri.fr.domain.Article.class.getName() + ".imagelinks", jcacheConfiguration);
+            cm.createCache(univers.torri.fr.domain.Article.class.getName() + ".comments", jcacheConfiguration);
+            cm.createCache(univers.torri.fr.domain.ImageLink.class.getName(), jcacheConfiguration);
+            cm.createCache(univers.torri.fr.domain.Comment.class.getName(), jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

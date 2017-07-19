@@ -1,0 +1,69 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myArticleLabel" jhiTranslate="travelerWebSiteApp.article.home.createOrEditLabel">Create or edit a Article</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!article.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="article.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="travelerWebSiteApp.article.shortDescription" for="field_shortDescription">Short Description</label>
+            <input type="text" class="form-control" name="shortDescription" id="field_shortDescription"
+                [(ngModel)]="article.shortDescription"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="travelerWebSiteApp.article.fullDescription" for="field_fullDescription">Full Description</label>
+            <input type="text" class="form-control" name="fullDescription" id="field_fullDescription"
+                [(ngModel)]="article.fullDescription"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="travelerWebSiteApp.article.date" for="field_date">Date</label>
+            <div class="d-flex">
+                <input id="field_date" type="datetime-local" class="form-control" name="date" [(ngModel)]="article.date"
+                  />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="travelerWebSiteApp.article.dateUpdate" for="field_dateUpdate">Date Update</label>
+            <div class="d-flex">
+                <input id="field_dateUpdate" type="datetime-local" class="form-control" name="dateUpdate" [(ngModel)]="article.dateUpdate"
+                  />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="travelerWebSiteApp.article.lieu" for="field_lieu">Lieu</label>
+            <input type="text" class="form-control" name="lieu" id="field_lieu"
+                [(ngModel)]="article.lieu"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="travelerWebSiteApp.article.positionX" for="field_positionX">Position X</label>
+            <input type="number" class="form-control" name="positionX" id="field_positionX"
+                [(ngModel)]="article.positionX"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="travelerWebSiteApp.article.positionY" for="field_positionY">Position Y</label>
+            <input type="number" class="form-control" name="positionY" id="field_positionY"
+                [(ngModel)]="article.positionY"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="travelerWebSiteApp.article.countryCode" for="field_countryCode">Country Code</label>
+            <input type="text" class="form-control" name="countryCode" id="field_countryCode"
+                [(ngModel)]="article.countryCode"  />
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

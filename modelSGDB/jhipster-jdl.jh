@@ -1,0 +1,43 @@
+entity Article{
+	shortDescription String,
+    fullDescription String,
+    date ZonedDateTime,
+    dateUpdate ZonedDateTime,
+    lieu String,
+    positionX Float,
+    positionY Float,
+    countryCode String
+}
+
+
+entity ImageLink{
+	urlImage String,
+    date ZonedDateTime,
+    date ZonedDateTime,
+}
+
+entity Comment{
+	comment String,
+    pseudo String,
+    date ZonedDateTime,
+}
+
+relationship OneToMany {
+	Article{imagelink} to ImageLink
+}
+
+relationship OneToMany {
+	Article{comment} to Comment
+}
+
+
+// Set pagination options
+paginate Article, Comment, ImageLink with infinite-scroll
+paginate Article, Comment, ImageLink with pagination
+
+dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl
+// Set an angular suffix
+angularSuffix * with OpenDataMind

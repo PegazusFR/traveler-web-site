@@ -1,0 +1,57 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "imagelink",
+            "otherEntityName": "imageLink",
+            "otherEntityRelationshipName": "article"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "comment",
+            "otherEntityName": "comment",
+            "otherEntityRelationshipName": "article"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "shortDescription",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "fullDescription",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "date",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "dateUpdate",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "lieu",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "positionX",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "positionY",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "countryCode",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20170719210508",
+    "entityTableName": "article",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "angularJSSuffix": "OpenDataMind"
+}

@@ -1,0 +1,23 @@
+{
+    "travelerWebSiteApp": {
+        "imageLink" : {
+            "home": {
+                "title": "ImageLinks",
+                "createLabel": "Créer un nouveau Image Link",
+                "createOrEditLabel": "Créer ou éditer un Image Link"
+            },
+            "created": "Un nouveau Image Link a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Image Link avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Image Link avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Image Link {{ id }} ?"
+            },
+            "detail": {
+                "title": "Image Link"
+            },
+            "urlImage": "Url Image",
+            "date": "Date",
+            "article": "Article"
+        }
+    }
+}

@@ -1,0 +1,72 @@
+<div>
+    <h2>
+        <span jhiTranslate="travelerWebSiteApp.imageLink.home.title">Image Links</span>
+        <button class="btn btn-primary float-right create-image-link-open-data-mind" [routerLink]="['/', { outlets: { popup: ['image-link-open-data-mind-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="travelerWebSiteApp.imageLink.home.createLabel">
+            Create new Image Link
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="imageLinks">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="urlImage"><span jhiTranslate="travelerWebSiteApp.imageLink.urlImage">Url Image</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="date"><span jhiTranslate="travelerWebSiteApp.imageLink.date">Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="articleId"><span jhiTranslate="travelerWebSiteApp.imageLink.article">Article</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let imageLink of imageLinks ;trackBy: trackId">
+                <td><a [routerLink]="['../image-link-open-data-mind', imageLink.id ]">{{imageLink.id}}</a></td>
+                <td>{{imageLink.urlImage}}</td>
+                <td>{{imageLink.date | date:'medium'}}</td>
+                <td>
+                    <div *ngIf="imageLink.articleId">
+                        <a [routerLink]="['../article-open-data-mind', imageLink.articleId  ]" >{{imageLink.articleId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../image-link-open-data-mind', imageLink.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'image-link-open-data-mind/'+ imageLink.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'image-link-open-data-mind/'+ imageLink.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+        <div *ngIf="imageLinks && imageLinks.length">
+            <div class="row justify-content-center">
+                <jhi-item-count [page]="page" [total]="queryCount" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+            </div>
+            <div class="row justify-content-center">
+                <ngb-pagination [collectionSize]="totalItems" [(page)]="page" (pageChange)="loadPage(page)"></ngb-pagination>
+            </div>
+        </div>
+</div>

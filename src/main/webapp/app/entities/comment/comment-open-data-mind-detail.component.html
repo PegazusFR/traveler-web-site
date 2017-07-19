@@ -1,0 +1,39 @@
+
+<div *ngIf="comment">
+    <h2><span jhiTranslate="travelerWebSiteApp.comment.detail.title">Comment</span> {{comment.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="travelerWebSiteApp.comment.comment">Comment</span></dt>
+        <dd>
+            <span>{{comment.comment}}</span>
+        </dd>
+        <dt><span jhiTranslate="travelerWebSiteApp.comment.pseudo">Pseudo</span></dt>
+        <dd>
+            <span>{{comment.pseudo}}</span>
+        </dd>
+        <dt><span jhiTranslate="travelerWebSiteApp.comment.date">Date</span></dt>
+        <dd>
+            <span>{{comment.date | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="travelerWebSiteApp.comment.article">Article</span></dt>
+        <dd>
+            <div *ngIf="comment.articleId">
+                <a [routerLink]="['/article-open-data-mind', comment.articleId]">{{comment.articleId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'comment-open-data-mind/'+ comment.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>
